@@ -10,6 +10,7 @@
 #méthode qui enlève les doublons de solution élémentaire (pas obliG je ccrois) 
 
 import itertools
+import time
 
 class Capteur:
     def __init__(self, id, duree_vie, zones):
@@ -56,17 +57,21 @@ def lire_fichier(lien_fichier):
 """
 def generer_combinaison_solution(nb_zones, tab_capteurs): #initiale
     combinaisons = []
+    total = 0
     for i in range(1,nb_zones+1):
         for combi in itertools.combinations(tab_capteurs, i):
-            if is_valide(combi, nb_zones):
+            total+= is_valide(combi, nb_zones)
+            # if is_valide(combi, nb_zones):
                 # TODO : ajouter la condition is_elementaire
-                combinaisons.append(combi)
+            combinaisons.append(combi)
+    print(total)
     return combinaisons
 
 # TODO idées heuristiques
 # - trier capteurs par nombre de zones couvertes, choisir ceux qui en ont le plus en premier jusqu'à solution
 # - trier capteurs par nombre de zones couvertes, choisir ceux qui en ont le moins en premier jusqu'à solution
 # - (sélection des capteurs au fur et à mesure en ajoutant les capteurs tant que la solution n'est pas valide, puis changer de capteur de départ)
+# - prendre un ensemble de solution qui regroupe le plus de capteurs et après limiter cet ensemble grâce à une méthode est élémentaire dans lquelle on enlève un capteur, puis un autre si tjs possible ...
 
 #amélioration avec permutations
 """Vérifie si la solution est valide
@@ -76,6 +81,43 @@ def generer_combinaison_solution(nb_zones, tab_capteurs): #initiale
 :returns: True si la solution est valide, False sinon
 """
 def is_valide(solution, nb_zones):
+    start_time = time.process_time()
+    zones_couvertes = []
+    for capteur in solution:
+        zones_couvertes.extend(capteur.zones)
+        zones_couvertes = list(set(zones_couvertes))
+        if len(zones_couvertes) == nb_zones:
+            end_time = time.process_time()
+            return end_time-start_time
+            # return True
+    end_time = time.process_time()
+    return end_time-start_time
+    # return False
+
+#mieux
+def is_valide2(solution, nb_zones):
+    start_time = time.process_time()
+    zones_couvertes = []
+    for capteur in solution:
+        zones_couvertes.extend(capteur.zones)
+    zones_couvertes = list(set(zones_couvertes))
+    if len(zones_couvertes) == nb_zones:
+        end_time = time.process_time()
+        return end_time-start_time
+            # return True
+    end_time = time.process_time()
+    return end_time-start_time
+    # return False
+
+"""Vérifie si la solution est élémentaire
+
+:param solution : tableau de tableau de capteurs
+:param nb_zones : nombre de zones
+:returns: True si la solution est élémentaire, False sinon
+"""
+def is_elementaire(solution, nb_zones):
+    #parcourir chaque capteur
+    #ajouter dans une liste les zones si elle y sont pas
     zones_couvertes = []
     for capteur in solution:
         for zone in capteur.zones:
@@ -86,26 +128,15 @@ def is_valide(solution, nb_zones):
     return False
 
 
-"""Vérifie si la solution est élémentaire
-
-:param solution : tableau de tableau de capteurs
-:param nb_zones : nombre de zones
-:returns: True si la solution est élémentaire, False sinon
-"""
-def is_elementaire(solution, nb_zones):
-
-    return 0
-
-
 
 #Main
-lien_fichier = '../data/fichier-exemple.txt'
+lien_fichier = '../data/gros_test_1.txt'
 nb_zones, tab_capteurs = lire_fichier(lien_fichier)
-print(nb_zones)
-for capteur in tab_capteurs:
-    print(capteur)
+# print(nb_zones)
+# for capteur in tab_capteurs:
+#     print(capteur)
 combinaisons = generer_combinaison_solution(nb_zones, tab_capteurs)
-for combi in combinaisons:
-    print("\nSolution : ")
-    for capteurs in combi:
-        print(capteurs)
+# for combi in combinaisons:
+#     print("\nSolution : ")
+#     for capteurs in combi:
+#         print(capteurs)
