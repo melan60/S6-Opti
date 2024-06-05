@@ -78,16 +78,47 @@ def generer_combinaison_solution(nb_zones, tab_capteurs): #initiale
 
 def heuristique_recursion(nb_zones, tab_capteurs, index_current_capteur, current_solution, list_solutions, list_tabou, nb_iterations):
     nb_iterations+=1
-    # for i in range(index_current_capteur, len(tab_capteurs)-index_current_capteur+1):
-    #     capteur = tab_capteurs[i]
-    #     if (capteur not in list_tabou):
-    #         current_solution.append(capteur)
-    #         list_tabou.append(capteur)
-        
+    for i in range(index_current_capteur, len(tab_capteurs)): #obtenir une solution
+        capteur = tab_capteurs[i]
+        if (capteur not in list_tabou):
+            list_tabou.append(capteur)
+            # if pour pas ajouter capteur inutile
+            if(not zones_in_list_capteurs(capteur, current_solution)):
+                current_solution.append(capteur)
+            
+                #Tester si soultion est OK
+                if(is_valide(current_solution, nb_zones)):
+                    if(is_elementaire(current_solution,nb_zones)):
+                        list_solutions.append(current_solution)
+                        # Si liste tabou est remplie (= nombre de capteurs), on la réinitialise
+                        if(len(list_tabou) == len(tab_capteurs)):
+                            return heuristique_recursion(nb_zones, tab_capteurs, current_solution[0].id, [], list_solutions, list_tabou[:current_solution[0].id], nb_iterations)
+                        return heuristique_recursion(nb_zones, tab_capteurs, capteur.id -1, current_solution[:-1], list_solutions, list_tabou, nb_iterations)
+
+    #condition d'arrêt
+    # if(current_solution == []):
+    #     return list_solutions
+    
+    #condition d'arrêt
     # if(nb_iterations == len(tab_capteurs)):
     #     return list_solutions
     
-    # return (nb_zones, tab_capteurs, .., list_solutions, list_tabou)
+    return heuristique_recursion(nb_zones, tab_capteurs, current_solution[0].id, [], list_solutions, list_tabou[:current_solution[0].id], nb_iterations)
+
+
+"""Vérifie si les zones couvertes par le capteur sont déjà couvertes par la solution
+:param solution :TODO
+:param nb_zones :
+:returns:
+"""
+def zones_in_list_capteurs(test_capteur, solution):
+    if(test_capteur.zones == []): 
+        return False
+    zones_couvertes = []
+    for capteur in solution:
+        zones_couvertes.extend(capteur.zones)
+    zones_couvertes = list(set(zones_couvertes))
+    return all(zone in zones_couvertes for zone in test_capteur.zones)
 
 #amélioration avec permutations[0][0]
 """Vérifie si la solution est valide
@@ -193,12 +224,22 @@ nb_zones, tab_capteurs = lire_fichier(lien_fichier)
 # print(nb_zones)
 # for capteur in tab_capteurs:
 #     print(capteur)
-combinaisons = generer_combinaison_solution(nb_zones, tab_capteurs)
+
+
+# combinaisons = generer_combinaison_solution(nb_zones, tab_capteurs)
 # for combi in combinaisons:
 #     print("\nSolution : ")
 #     for capteurs in combi:
 #         print(capteurs)
-return_lines = create_data_prog_linear(combinaisons, tab_capteurs)
-nom_fichier = create_file_prog_linear(return_lines)
-execute_prog_linear(nom_fichier)
-print(return_lines)
+
+truc = heuristique_recursion(nb_zones, tab_capteurs, 0, [], [], [], 0)
+
+# return_lines = create_data_prog_linear(combinaisons, tab_capteurs)
+# nom_fichier = create_file_prog_linear(return_lines)
+# execute_prog_linear(nom_fichier)
+# print(return_lines)
+
+
+# cap = Capteur(6, 8, [])
+# truc = zones_in_list_capteurs(cap, combinaisons[0])
+# print(truc)
