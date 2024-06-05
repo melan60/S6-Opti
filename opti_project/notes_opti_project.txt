@@ -1,0 +1,9 @@
+Commande pour exécuter le prog linéaire : 
+    glpsol –cpxlp programme.lp -o solution
+
+itertools.combinations : pour faire toutes les combinaisons possible de capteurs
+
+1) Est ce que on peut faire une heuristique avec iterToolCombination?
+2) Est ce que tout les fichiers doivent être executable (Taille)?
+3) Solution optimale = maximale ou toutes les valeurs qui permettent d'avoir le maximale
+4) Nombre d'heuristique, est ce que elles doivent être exact et renvoyer toutes les solutions élémentaires

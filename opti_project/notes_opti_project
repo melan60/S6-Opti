@@ -1,4 +1,0 @@
-Commande pour exécuter le prog linéaire : 
-    glpsol –cpxlp programme.lp -o solution
-
-itertools.combinations : pour faire toutes les combinaisons possible de capteurs

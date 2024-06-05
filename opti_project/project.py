@@ -12,6 +12,7 @@
 import itertools
 import time
 import numpy as np
+import os
 
 class Capteur:
     def __init__(self, id, duree_vie, zones):
@@ -25,7 +26,6 @@ class Capteur:
     
 
 """Permet de lire un fichier
-
 :param lien_fichier: lien du fichier à lire
 :returns: le nombre de zones, tableau de capteurs
 """
@@ -51,7 +51,6 @@ def lire_fichier(lien_fichier):
 
 
 """Génère une/l'ensemble combinaison de capteur qui couvre toute la zone
-
 :param nb_zones: 
 :param tab_capteurs: 
 :returns: tableau de tableau de capteurs qui permet de couvrir toutes les zones
@@ -72,12 +71,26 @@ def generer_combinaison_solution(nb_zones, tab_capteurs): #initiale
 # TODO idées heuristiques
 # - trier capteurs par nombre de zones couvertes, choisir ceux qui en ont le plus en premier jusqu'à solution
 # - trier capteurs par nombre de zones couvertes, choisir ceux qui en ont le moins en premier jusqu'à solution
-# - (sélection des capteurs au fur et à mesure en ajoutant les capteurs tant que la solution n'est pas valide, puis changer de capteur de départ)
-# - prendre un ensemble de solution qui regroupe le plus de capteurs et après limiter cet ensemble grâce à une méthode est élémentaire dans lquelle on enlève un capteur, puis un autre si tjs possible ...
+# - (sélection des capteurs au fur et à mesure en ajoutant les capteurs tant que la solution n'est pas valide, 
+    # puis changer de capteur de départ)
+# - prendre un ensemble de solution qui regroupe le plus de capteurs et après 
+    # limiter cet ensemble grâce à une méthode est élémentaire dans lquelle on enlève un capteur, puis un autre si tjs possible ...
+
+def heuristique_recursion(nb_zones, tab_capteurs, index_current_capteur, current_solution, list_solutions, list_tabou, nb_iterations):
+    nb_iterations+=1
+    # for i in range(index_current_capteur, len(tab_capteurs)-index_current_capteur+1):
+    #     capteur = tab_capteurs[i]
+    #     if (capteur not in list_tabou):
+    #         current_solution.append(capteur)
+    #         list_tabou.append(capteur)
+        
+    # if(nb_iterations == len(tab_capteurs)):
+    #     return list_solutions
+    
+    # return (nb_zones, tab_capteurs, .., list_solutions, list_tabou)
 
 #amélioration avec permutations[0][0]
 """Vérifie si la solution est valide
-
 :param solution : tableau de tableau de capteurs
 :param nb_zones : nombre de zones
 :returns: True si la solution est valide, False sinon
@@ -97,7 +110,6 @@ def is_valide(solution, nb_zones):
     return False
 
 """Vérifie si la solution est élémentaire
-
 :param solution : tableau de tableau de capteurs
 :param nb_zones : nombre de zones
 :returns: True si la solution est élémentaire, False sinon
@@ -125,20 +137,18 @@ def is_elementaire(solution, nb_zones):
 """
 def create_data_prog_linear(solutions_elementaires,tab_capteurs):
     system_lineaire = np.zeros((len(tab_capteurs),len(solutions_elementaires))) # Matrice de nb_capteurs lignes et nb_solutions colonnes ne contenant que des 0
-    return_lines = []
+    data_linear = ""
     first_line = "Maximize "
-    
     # i = colonne
     for i in range(len(solutions_elementaires)):
         first_line += "t"+ str(i+1) + "+"
         for capteur in solutions_elementaires[i]:
             system_lineaire[capteur.id-1][i] = 1
-    return_lines.append(first_line[:-1])
-    return_lines.append("Subject To")
+    data_linear += first_line[:-1] + "\n\nSubject To\n\n"
     for i in range(len(tab_capteurs)):
         line = format_linear_line(system_lineaire[i])
-        return_lines.append((line + " <= " + tab_capteurs[i].duree_vie))
-    return return_lines
+        data_linear += line + " <= " + tab_capteurs[i].duree_vie +"\n"
+    return data_linear+"\nEND"
 
 
 """TODO
@@ -157,9 +167,12 @@ def format_linear_line(row):
 :param solutions_elementaires :
 :returns: le fichier .lp
 """
-def create_file_prog_linear(lines):
-
-    return
+def create_file_prog_linear(data_linear):
+    nom_fichier = "prog_linear.lp"
+    fichier = open(nom_fichier,"w")
+    fichier.write(data_linear)
+    fichier.close()
+    return nom_fichier
 
 
 """Execute le programme linéaire TODO
@@ -167,8 +180,8 @@ def create_file_prog_linear(lines):
 :param nb_zones : nombre de zones
 :returns: True si la solution est élémentaire, False sinon
 """
-def execute_prog_linear(fichier):
-    return 0
+def execute_prog_linear(nom_fichier):
+    os.system('glpsol --cpxlp '+nom_fichier+' -o solution')
 
 #Main
 lien_fichier = '../data/fichier-exemple.txt'
@@ -186,4 +199,6 @@ combinaisons = generer_combinaison_solution(nb_zones, tab_capteurs)
 #     for capteurs in combi:
 #         print(capteurs)
 return_lines = create_data_prog_linear(combinaisons, tab_capteurs)
+nom_fichier = create_file_prog_linear(return_lines)
+execute_prog_linear(nom_fichier)
 print(return_lines)
