@@ -22,32 +22,7 @@ class Capteur:
 
     def __str__(self):
         return "Capteur " + str(self.id) + " : duree_vie = " + str(self.duree_vie) + ", zones = " + str(self.zones)
-    
-    
 
-"""Permet de lire un fichier
-:param lien_fichier: lien du fichier à lire
-:returns: le nombre de zones, tableau de capteurs
-"""
-def lire_fichier(lien_fichier):
-    # Ouverture du fichier
-    fichier = open(lien_fichier)
-    # Lecture des premières lignes pour récupérer les informations
-    nb_capteurs = int(fichier.readline())
-    nb_zones = int(fichier.readline())
-
-    tab_capteur = []
-    # Récupération des informations sur la durée de vie des capteurs
-    duree_vie_capteurs = fichier.readline().strip().split(" ")
-    # Boucle sur tous les capteurs pour récupérer les zones associées
-    ligne = fichier.readline()
-    for i in range(nb_capteurs):
-        zones = ligne.strip().split(" ")
-        # Création du capteur et ajout dans le tableau
-        tab_capteur.append(Capteur(i+1,duree_vie_capteurs[i], zones))
-        ligne = fichier.readline()
-
-    return nb_zones, tab_capteur
 
 
 """Génère une/l'ensemble combinaison de capteur qui couvre toute la zone
@@ -117,6 +92,32 @@ def heuristique_recursion(nb_zones, tab_capteurs, index_current_capteur, current
     
     return heuristique_recursion(nb_zones, tab_capteurs, current_solution[0].id, [], list_solutions, list_tabou[:current_solution[0].id], nb_iterations)
 
+#=======================================================================================================
+#MÉTHODES UTILES
+#=======================================================================================================
+"""Permet de lire un fichier
+:param lien_fichier: lien du fichier à lire
+:returns: le nombre de zones, tableau de capteurs
+"""
+def lire_fichier(lien_fichier):
+    # Ouverture du fichier
+    fichier = open(lien_fichier)
+    # Lecture des premières lignes pour récupérer les informations
+    nb_capteurs = int(fichier.readline())
+    nb_zones = int(fichier.readline())
+
+    tab_capteur = []
+    # Récupération des informations sur la durée de vie des capteurs
+    duree_vie_capteurs = fichier.readline().strip().split(" ")
+    # Boucle sur tous les capteurs pour récupérer les zones associées
+    ligne = fichier.readline()
+    for i in range(nb_capteurs):
+        zones = ligne.strip().split(" ")
+        # Création du capteur et ajout dans le tableau
+        tab_capteur.append(Capteur(i+1,duree_vie_capteurs[i], zones))
+        ligne = fichier.readline()
+
+    return nb_zones, tab_capteur
 
 """Vérifie si les zones couvertes par le capteur sont déjà couvertes par la solution
 :param solution :TODO
@@ -173,6 +174,10 @@ def is_elementaire(solution, nb_zones):
     # return end_time-start_time
     return True
 
+
+#=======================================================================================================
+#PROGRAMME LINEAIRE
+#=======================================================================================================
 """TODO
 :param solutions_elementaires : toutes les solutions qui sont élémentaires
 :param tab_capteurs : contient tout les capteurs
@@ -225,6 +230,7 @@ def create_file_prog_linear(data_linear,nom_fichier,dossier):
 """
 def execute_prog_linear(nom_fichier, dossier):
     os.system('glpsol --cpxlp ../results/'+dossier+"/"+nom_fichier+'_prog.lp -o ../results/'+dossier+"/"+nom_fichier+'_solution')
+
 
 #=======================================================================================================
 #=======================================================================================================
@@ -287,48 +293,3 @@ def main(liste_fichier):
 #=======================================================================================================
 liste_fichier = ['fichier-exemple','moyen_test_3','moyen_test_2','gros_test_1','maxi_test_1']
 main(liste_fichier)
-
-#Main
-# # lien_fichier = '../data/fichier-exemple.txt'
-# # lien_fichier = '../data/moyen_test_2.txt'
-# # lien_fichier = '../data/moyen_test_3.txt'
-# lien_fichier = '../data/gros_test_1.txt'
-# # lien_fichier = '../data/maxi_test_1.txt'
-
-# nb_zones, tab_capteurs = lire_fichier(lien_fichier)
-# # # print(nb_zones)
-# # # for capteur in tab_capteurs:",current_solution[0].id)
-# #     # for capt in list_tabou:
-# #     #     print("liste tabou",capt)
-# # #     print(capteur)
-
-# current_time = time.process_time()
-# # combinaisons = generer_combinaison_solution(nb_zones, tab_capteurs,current_time,60)
-# # for combi in combinaisons:
-# #     print("\nSolution : ")
-# #     for capteurs in combi:
-# #         print(capteurs)
-
-# # tri de tab_capteurs par nombre de zones couvertes
-# tab_capteurs.sort(key=lambda x: len(x.zones), reverse=False)
-# # Changer l'id des capteurs pour qu'ils soient de 1 à n
-# for i in range(len(tab_capteurs)):
-#     tab_capteurs[i].id = i+1
-# for capteur in tab_capteurs:
-#     print(capteur)
-
-# combinaisons = heuristique_recursion(nb_zones, tab_capteurs, 0, [], [], [], 0)
-# # for combi in combinaisons:
-# #     print("\nSolution : ")
-# #     for capteurs in combi:
-# #         print(capteurs)
-
-# return_lines = create_data_prog_linear(combinaisons, tab_capteurs)
-
-# # nom_fichier = create_file_prog_linear(return_lines,"fichier-exemple")
-# # nom_fichier = create_file_prog_linear(return_lines,"moyen_test_2")
-# # nom_fichier = create_file_prog_linear(return_lines,"moyen_test_3")
-# nom_fichier = create_file_prog_linear(return_lines,"gros_test_1")
-# # nom_fichier = create_file_prog_linear(return_lines,"maxi_test_1")
-
-# execute_prog_linear(nom_fichier)
