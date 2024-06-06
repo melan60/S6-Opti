@@ -232,6 +232,7 @@ def execute_prog_linear(nom_fichier):
 # lien_fichier = '../data/moyen_test_3.txt'
 lien_fichier = '../data/gros_test_1.txt'
 # lien_fichier = '../data/maxi_test_1.txt'
+
 nb_zones, tab_capteurs = lire_fichier(lien_fichier)
 # # print(nb_zones)
 # # for capteur in tab_capteurs:",current_solution[0].id)
@@ -239,18 +240,18 @@ nb_zones, tab_capteurs = lire_fichier(lien_fichier)
 #     #     print("liste tabou",capt)
 # #     print(capteur)
 
-# current_time = time.process_time()
-# combinaisons = generer_combinaison_solution(nb_zones, tab_capteurs,current_time,60)
-# # for combi in combinaisons:
-# #     print("\nSolution : ")
-# #     for capteurs in combi:
-# #         print(capteurs)
+current_time = time.process_time()
+combinaisons = generer_combinaison_solution(nb_zones, tab_capteurs,current_time,60)
+# for combi in combinaisons:
+#     print("\nSolution : ")
+#     for capteurs in combi:
+#         print(capteurs)
 
-combinaisons = heuristique_recursion(nb_zones, tab_capteurs, 0, [], [], [], 0)
-for combi in combinaisons:
-    print("\nSolution : ")
-    for capteurs in combi:
-        print(capteurs)
+# combinaisons = heuristique_recursion(nb_zones, tab_capteurs, 0, [], [], [], 0)
+# for combi in combinaisons:
+#     print("\nSolution : ")
+#     for capteurs in combi:
+#         print(capteurs)
 
 return_lines = create_data_prog_linear(combinaisons, tab_capteurs)
 # nom_fichier = create_file_prog_linear(return_lines,"fichier-exemple")
@@ -259,10 +260,4 @@ return_lines = create_data_prog_linear(combinaisons, tab_capteurs)
 nom_fichier = create_file_prog_linear(return_lines,"gros_test_1")
 # nom_fichier = create_file_prog_linear(return_lines,"maxi_test_1")
 
-# execute_prog_linear("../results/maxi_test_1")
 execute_prog_linear(nom_fichier)
-
-
-# cap = Capteur(6, 8, [])
-# truc = zones_in_list_capteurs(cap, combinaisons[0])
-# print(truc)
