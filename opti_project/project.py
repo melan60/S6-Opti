@@ -210,8 +210,8 @@ def format_linear_line(row):
 :param solutions_elementaires :
 :returns: le fichier .lp
 """
-def create_file_prog_linear(data_linear,nom_fichier):
-    nom_fichier = "../results/recursion/"+nom_fichier
+def create_file_prog_linear(data_linear,nom_fichier,dossier):
+    nom_fichier = "../results/"+dossier+"/"+nom_fichier
     fichier = open(nom_fichier+"_prog.lp","w")
     fichier.write(data_linear)
     fichier.close()
@@ -223,50 +223,112 @@ def create_file_prog_linear(data_linear,nom_fichier):
 :param nb_zones : nombre de zones
 :returns: True si la solution est élémentaire, False sinon
 """
-def execute_prog_linear(nom_fichier):
-    os.system('glpsol --cpxlp '+nom_fichier+'_prog.lp -o '+nom_fichier+'_solution')
+def execute_prog_linear(nom_fichier, dossier):
+    os.system('glpsol --cpxlp ../results/'+dossier+"/"+nom_fichier+'_prog.lp -o ../results/'+dossier+"/"+nom_fichier+'_solution')
+
+#=======================================================================================================
+#=======================================================================================================
+def main(liste_fichier):
+    for nom_fichier in liste_fichier:
+        print("\n",nom_fichier)
+        #Lecture du fichier
+        nb_zones, tab_capteurs = lire_fichier("../data/"+nom_fichier+".txt")
+
+        #HEURISTIQUES GLOUTON
+        current_time_glouton = time.process_time()
+        #Générer les configurations élémentaires
+        combinaisons_glouton = generer_combinaison_solution(nb_zones, tab_capteurs,current_time_glouton,15)
+        return_lines_glouton = create_data_prog_linear(combinaisons_glouton, tab_capteurs)
+        create_file_prog_linear(return_lines_glouton,nom_fichier,"1-glouton")
+        execute_prog_linear(nom_fichier,"1-glouton")
+        end_time_glouton = time.process_time()
+        print("\ttps glouton : ", end_time_glouton-current_time_glouton)
+
+        #HEURISTIQUES recursif classique
+        current_time_recursif_classique = time.process_time()
+        combinaisons_rec_classique = heuristique_recursion(nb_zones, tab_capteurs, 0, [], [], [], 0)
+        return_lines_rec_classique = create_data_prog_linear(combinaisons_rec_classique, tab_capteurs)
+        create_file_prog_linear(return_lines_rec_classique,nom_fichier,"2-recursion_classique")
+        execute_prog_linear(nom_fichier,"2-recursion_classique")
+        end_time_recursif_classique = time.process_time()
+        print("\ttps rec classique : ", end_time_recursif_classique-current_time_recursif_classique)
+
+        #HEURISTIQUES récursif tri croissant nb_zone / capteurs
+        current_time_recursif_croissant = time.process_time()
+        # tri de tab_capteurs par nombre de zones couvertes
+        tab_capteurs_croissant = sorted(tab_capteurs, key=lambda x: len(x.zones), reverse=False)
+        # Changer l'id des capteurs
+        for i in range(len(tab_capteurs_croissant)):
+            tab_capteurs_croissant[i].id = i+1
+        combinaisons_rec_croissant = heuristique_recursion(nb_zones, tab_capteurs_croissant, 0, [], [], [], 0)
+        return_lines_rec_croissant = create_data_prog_linear(combinaisons_rec_croissant, tab_capteurs_croissant)
+        create_file_prog_linear(return_lines_rec_croissant,nom_fichier,"3-recursion_croissante")
+        execute_prog_linear(nom_fichier,"3-recursion_croissante")
+        end_time_recursif_croissant = time.process_time()
+        print("\ttps rec croissant : ", end_time_recursif_croissant-current_time_recursif_croissant)
+
+        #HEURISTIQUES récursif tri décroissant nb_zone / capteurs
+        current_time_recursif_decroissant = time.process_time()
+        # tri de tab_capteurs par nombre de zones couvertes
+        tab_capteurs_decroissant = sorted(tab_capteurs,key=lambda x: len(x.zones), reverse=True)
+        # Changer l'id des capteurs
+        for i in range(len(tab_capteurs_decroissant)):
+            tab_capteurs_decroissant[i].id = i+1
+        combinaisons_rec_decroissant = heuristique_recursion(nb_zones, tab_capteurs_decroissant, 0, [], [], [], 0)
+        return_lines_rec_decroissant = create_data_prog_linear(combinaisons_rec_decroissant, tab_capteurs_decroissant)
+        create_file_prog_linear(return_lines_rec_decroissant,nom_fichier,"4-recursion_decroissante")
+        execute_prog_linear(nom_fichier,"4-recursion_decroissante")
+        end_time_recursif_decroissant = time.process_time()
+        print("tps rec decroissant : ", end_time_recursif_decroissant-current_time_recursif_decroissant)
+    return
+
+#=======================================================================================================
+                                #EXECUTION DU MAIN
+#=======================================================================================================
+liste_fichier = ['fichier-exemple','moyen_test_3','moyen_test_2','gros_test_1','maxi_test_1']
+main(liste_fichier)
 
 #Main
-# lien_fichier = '../data/fichier-exemple.txt'
-# lien_fichier = '../data/moyen_test_2.txt'
-# lien_fichier = '../data/moyen_test_3.txt'
-lien_fichier = '../data/gros_test_1.txt'
-# lien_fichier = '../data/maxi_test_1.txt'
+# # lien_fichier = '../data/fichier-exemple.txt'
+# # lien_fichier = '../data/moyen_test_2.txt'
+# # lien_fichier = '../data/moyen_test_3.txt'
+# lien_fichier = '../data/gros_test_1.txt'
+# # lien_fichier = '../data/maxi_test_1.txt'
 
-nb_zones, tab_capteurs = lire_fichier(lien_fichier)
-# # print(nb_zones)
-# # for capteur in tab_capteurs:",current_solution[0].id)
-#     # for capt in list_tabou:
-#     #     print("liste tabou",capt)
-# #     print(capteur)
+# nb_zones, tab_capteurs = lire_fichier(lien_fichier)
+# # # print(nb_zones)
+# # # for capteur in tab_capteurs:",current_solution[0].id)
+# #     # for capt in list_tabou:
+# #     #     print("liste tabou",capt)
+# # #     print(capteur)
 
-current_time = time.process_time()
-# combinaisons = generer_combinaison_solution(nb_zones, tab_capteurs,current_time,60)
-# for combi in combinaisons:
-#     print("\nSolution : ")
-#     for capteurs in combi:
-#         print(capteurs)
+# current_time = time.process_time()
+# # combinaisons = generer_combinaison_solution(nb_zones, tab_capteurs,current_time,60)
+# # for combi in combinaisons:
+# #     print("\nSolution : ")
+# #     for capteurs in combi:
+# #         print(capteurs)
 
-# tri de tab_capteurs par nombre de zones couvertes
-tab_capteurs.sort(key=lambda x: len(x.zones), reverse=False)
-# Changer l'id des capteurs pour qu'ils soient de 1 à n
-for i in range(len(tab_capteurs)):
-    tab_capteurs[i].id = i+1
-for capteur in tab_capteurs:
-    print(capteur)
+# # tri de tab_capteurs par nombre de zones couvertes
+# tab_capteurs.sort(key=lambda x: len(x.zones), reverse=False)
+# # Changer l'id des capteurs pour qu'ils soient de 1 à n
+# for i in range(len(tab_capteurs)):
+#     tab_capteurs[i].id = i+1
+# for capteur in tab_capteurs:
+#     print(capteur)
 
-combinaisons = heuristique_recursion(nb_zones, tab_capteurs, 0, [], [], [], 0)
-# for combi in combinaisons:
-#     print("\nSolution : ")
-#     for capteurs in combi:
-#         print(capteurs)
+# combinaisons = heuristique_recursion(nb_zones, tab_capteurs, 0, [], [], [], 0)
+# # for combi in combinaisons:
+# #     print("\nSolution : ")
+# #     for capteurs in combi:
+# #         print(capteurs)
 
-return_lines = create_data_prog_linear(combinaisons, tab_capteurs)
+# return_lines = create_data_prog_linear(combinaisons, tab_capteurs)
 
-# nom_fichier = create_file_prog_linear(return_lines,"fichier-exemple")
-# nom_fichier = create_file_prog_linear(return_lines,"moyen_test_2")
-# nom_fichier = create_file_prog_linear(return_lines,"moyen_test_3")
-nom_fichier = create_file_prog_linear(return_lines,"gros_test_1V3")
-# nom_fichier = create_file_prog_linear(return_lines,"maxi_test_1")
+# # nom_fichier = create_file_prog_linear(return_lines,"fichier-exemple")
+# # nom_fichier = create_file_prog_linear(return_lines,"moyen_test_2")
+# # nom_fichier = create_file_prog_linear(return_lines,"moyen_test_3")
+# nom_fichier = create_file_prog_linear(return_lines,"gros_test_1")
+# # nom_fichier = create_file_prog_linear(return_lines,"maxi_test_1")
 
-execute_prog_linear(nom_fichier)
+# execute_prog_linear(nom_fichier)
