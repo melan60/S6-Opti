@@ -241,23 +241,32 @@ nb_zones, tab_capteurs = lire_fichier(lien_fichier)
 # #     print(capteur)
 
 current_time = time.process_time()
-combinaisons = generer_combinaison_solution(nb_zones, tab_capteurs,current_time,60)
+# combinaisons = generer_combinaison_solution(nb_zones, tab_capteurs,current_time,60)
 # for combi in combinaisons:
 #     print("\nSolution : ")
 #     for capteurs in combi:
 #         print(capteurs)
 
-# combinaisons = heuristique_recursion(nb_zones, tab_capteurs, 0, [], [], [], 0)
+# tri de tab_capteurs par nombre de zones couvertes
+tab_capteurs.sort(key=lambda x: len(x.zones), reverse=False)
+# Changer l'id des capteurs pour qu'ils soient de 1 à n
+for i in range(len(tab_capteurs)):
+    tab_capteurs[i].id = i+1
+for capteur in tab_capteurs:
+    print(capteur)
+
+combinaisons = heuristique_recursion(nb_zones, tab_capteurs, 0, [], [], [], 0)
 # for combi in combinaisons:
 #     print("\nSolution : ")
 #     for capteurs in combi:
 #         print(capteurs)
 
 return_lines = create_data_prog_linear(combinaisons, tab_capteurs)
+
 # nom_fichier = create_file_prog_linear(return_lines,"fichier-exemple")
 # nom_fichier = create_file_prog_linear(return_lines,"moyen_test_2")
 # nom_fichier = create_file_prog_linear(return_lines,"moyen_test_3")
-nom_fichier = create_file_prog_linear(return_lines,"gros_test_1")
+nom_fichier = create_file_prog_linear(return_lines,"gros_test_1V3")
 # nom_fichier = create_file_prog_linear(return_lines,"maxi_test_1")
 
 execute_prog_linear(nom_fichier)

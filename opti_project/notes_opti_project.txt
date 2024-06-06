@@ -4,7 +4,6 @@ QUESTIONS
 
 
 1) générer le programme linéaire : faire une vérification si la ligne est vide / rempli uniquement de 0 => la supprimer
-2) Créer une autre heuristique simple : p-ê un tri par nombre de zones, puis ajouter les capteurs un à un jusqu'à ce que ça soit élémentaire ?
 3) Ajouter un timer sur l'heuristique 2 pour pouvoir l'executer avec maxi test
 4) créer des dossiers dans result pour avoir un dossier pour chaques heuristiques
 5) mettre des timer partout et comparer les performances
