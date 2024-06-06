@@ -1,0 +1,290 @@
+Problem:    
+Rows:       20
+Columns:    238
+Non-zeros:  806
+Status:     OPTIMAL
+Objective:  obj = 104 (MAXimum)
+
+   No.   Row name   St   Activity     Lower bound   Upper bound    Marginal
+------ ------------ -- ------------- ------------- ------------- -------------
+     1 r.5          NU            16                          16             1 
+     2 r.6          B              0                          19 
+     3 r.7          NU            15                          15         < eps
+     4 r.8          B              0                           4 
+     5 r.9          NU            19                          19             1 
+     6 r.10         NU            13                          13             1 
+     7 r.11         NU            16                          16         < eps
+     8 r.12         NU            15                          15             1 
+     9 r.13         B             15                          16 
+    10 r.14         NU            18                          18             1 
+    11 r.15         NU            15                          15             1 
+    12 r.16         B             12                          19 
+    13 r.17         B             12                          20 
+    14 r.18         NU             8                           8             1 
+    15 r.19         B              0                          34 
+    16 r.20         B              0                          12 
+    17 r.21         B              0                          51 
+    18 r.22         B             18                          19 
+    19 r.23         B             16                          25 
+    20 r.24         B              0                          43 
+
+   No. Column name  St   Activity     Lower bound   Upper bound    Marginal
+------ ------------ -- ------------- ------------- ------------- -------------
+     1 t1           B             16             0               
+     2 t2           B             15             0               
+     3 t3           NL             0             0                       < eps
+     4 t4           NL             0             0                       < eps
+     5 t5           B              4             0               
+     6 t6           NL             0             0                       < eps
+     7 t7           NL             0             0                       < eps
+     8 t8           B             13             0               
+     9 t9           NL             0             0                       < eps
+    10 t10          B              3             0               
+    11 t11          B             12             0               
+    12 t12          B             15             0               
+    13 t13          B             18             0               
+    14 t14          NL             0             0                       < eps
+    15 t15          B              8             0               
+    16 t16          NL             0             0                       < eps
+    17 t17          NL             0             0                          -1 
+    18 t18          NL             0             0                       < eps
+    19 t19          NL             0             0                          -1 
+    20 t20          NL             0             0                       < eps
+    21 t21          NL             0             0                          -1 
+    22 t22          NL             0             0                       < eps
+    23 t23          NL             0             0                       < eps
+    24 t24          NL             0             0                       < eps
+    25 t25          NL             0             0                       < eps
+    26 t26          NL             0             0                       < eps
+    27 t27          NL             0             0                       < eps
+    28 t28          NL             0             0                          -1 
+    29 t29          NL             0             0                       < eps
+    30 t30          NL             0             0                       < eps
+    31 t31          NL             0             0                          -1 
+    32 t32          NL             0             0                       < eps
+    33 t33          NL             0             0                       < eps
+    34 t34          NL             0             0                       < eps
+    35 t35          NL             0             0                       < eps
+    36 t36          NL             0             0                       < eps
+    37 t37          NL             0             0                       < eps
+    38 t38          NL             0             0                       < eps
+    39 t39          NL             0             0                       < eps
+    40 t40          NL             0             0                       < eps
+    41 t41          NL             0             0                       < eps
+    42 t42          NL             0             0                       < eps
+    43 t43          NL             0             0                       < eps
+    44 t44          NL             0             0                       < eps
+    45 t45          NL             0             0                       < eps
+    46 t46          NL             0             0                       < eps
+    47 t47          NL             0             0                          -1 
+    48 t48          NL             0             0                          -1 
+    49 t49          NL             0             0                          -1 
+    50 t50          NL             0             0                          -1 
+    51 t51          NL             0             0                       < eps
+    52 t52          NL             0             0                          -1 
+    53 t53          NL             0             0                       < eps
+    54 t54          NL             0             0                          -1 
+    55 t55          NL             0             0                       < eps
+    56 t56          NL             0             0                       < eps
+    57 t57          NL             0             0                       < eps
+    58 t58          NL             0             0                       < eps
+    59 t59          NL             0             0                       < eps
+    60 t60          NL             0             0                       < eps
+    61 t61          NL             0             0                       < eps
+    62 t62          NL             0             0                       < eps
+    63 t63          NL             0             0                       < eps
+    64 t64          NL             0             0                       < eps
+    65 t65          NL             0             0                       < eps
+    66 t66          NL             0             0                       < eps
+    67 t67          NL             0             0                       < eps
+    68 t68          NL             0             0                       < eps
+    69 t69          NL             0             0                          -1 
+    70 t70          NL             0             0                       < eps
+    71 t71          NL             0             0                          -1 
+    72 t72          NL             0             0                       < eps
+    73 t73          NL             0             0                       < eps
+    74 t74          NL             0             0                          -1 
+    75 t75          NL             0             0                       < eps
+    76 t76          NL             0             0                       < eps
+    77 t77          NL             0             0                       < eps
+    78 t78          NL             0             0                       < eps
+    79 t79          NL             0             0                       < eps
+    80 t80          NL             0             0                          -2 
+    81 t81          NL             0             0                          -2 
+    82 t82          NL             0             0                          -1 
+    83 t83          NL             0             0                          -1 
+    84 t84          NL             0             0                          -1 
+    85 t85          NL             0             0                          -2 
+    86 t86          NL             0             0                          -1 
+    87 t87          NL             0             0                          -1 
+    88 t88          NL             0             0                          -1 
+    89 t89          NL             0             0                          -1 
+    90 t90          NL             0             0                          -1 
+    91 t91          NL             0             0                       < eps
+    92 t92          NL             0             0                       < eps
+    93 t93          NL             0             0                          -2 
+    94 t94          NL             0             0                       < eps
+    95 t95          NL             0             0                       < eps
+    96 t96          NL             0             0                          -2 
+    97 t97          NL             0             0                          -2 
+    98 t98          NL             0             0                       < eps
+    99 t99          NL             0             0                       < eps
+   100 t100         NL             0             0                       < eps
+   101 t101         NL             0             0                          -1 
+   102 t102         NL             0             0                       < eps
+   103 t103         NL             0             0                       < eps
+   104 t104         NL             0             0                       < eps
+   105 t105         NL             0             0                       < eps
+   106 t106         NL             0             0                       < eps
+   107 t107         NL             0             0                          -2 
+   108 t108         NL             0             0                          -2 
+   109 t109         NL             0             0                          -1 
+   110 t110         NL             0             0                          -1 
+   111 t111         NL             0             0                       < eps
+   112 t112         NL             0             0                          -1 
+   113 t113         NL             0             0                          -1 
+   114 t114         NL             0             0                          -1 
+   115 t115         NL             0             0                       < eps
+   116 t116         NL             0             0                       < eps
+   117 t117         NL             0             0                       < eps
+   118 t118         NL             0             0                       < eps
+   119 t119         NL             0             0                       < eps
+   120 t120         NL             0             0                       < eps
+   121 t121         NL             0             0                       < eps
+   122 t122         NL             0             0                          -1 
+   123 t123         NL             0             0                       < eps
+   124 t124         NL             0             0                       < eps
+   125 t125         NL             0             0                       < eps
+   126 t126         NL             0             0                       < eps
+   127 t127         NL             0             0                       < eps
+   128 t128         NL             0             0                       < eps
+   129 t129         NL             0             0                       < eps
+   130 t130         NL             0             0                       < eps
+   131 t131         NL             0             0                       < eps
+   132 t132         NL             0             0                       < eps
+   133 t133         NL             0             0                       < eps
+   134 t134         NL             0             0                          -2 
+   135 t135         NL             0             0                          -1 
+   136 t136         NL             0             0                          -2 
+   137 t137         NL             0             0                          -1 
+   138 t138         NL             0             0                          -1 
+   139 t139         NL             0             0                          -1 
+   140 t140         NL             0             0                          -2 
+   141 t141         NL             0             0                          -2 
+   142 t142         NL             0             0                          -1 
+   143 t143         NL             0             0                          -1 
+   144 t144         NL             0             0                          -1 
+   145 t145         NL             0             0                          -2 
+   146 t146         NL             0             0                          -2 
+   147 t147         NL             0             0                          -1 
+   148 t148         NL             0             0                          -2 
+   149 t149         NL             0             0                          -2 
+   150 t150         NL             0             0                          -2 
+   151 t151         NL             0             0                          -2 
+   152 t152         NL             0             0                          -2 
+   153 t153         NL             0             0                          -2 
+   154 t154         NL             0             0                          -1 
+   155 t155         NL             0             0                          -1 
+   156 t156         NL             0             0                          -1 
+   157 t157         NL             0             0                          -1 
+   158 t158         NL             0             0                       < eps
+   159 t159         NL             0             0                       < eps
+   160 t160         NL             0             0                       < eps
+   161 t161         NL             0             0                       < eps
+   162 t162         NL             0             0                       < eps
+   163 t163         NL             0             0                       < eps
+   164 t164         NL             0             0                       < eps
+   165 t165         NL             0             0                       < eps
+   166 t166         NL             0             0                          -1 
+   167 t167         NL             0             0                          -1 
+   168 t168         NL             0             0                       < eps
+   169 t169         NL             0             0                       < eps
+   170 t170         NL             0             0                       < eps
+   171 t171         NL             0             0                       < eps
+   172 t172         NL             0             0                       < eps
+   173 t173         NL             0             0                          -1 
+   174 t174         NL             0             0                       < eps
+   175 t175         NL             0             0                       < eps
+   176 t176         NL             0             0                          -1 
+   177 t177         NL             0             0                          -1 
+   178 t178         NL             0             0                          -1 
+   179 t179         NL             0             0                       < eps
+   180 t180         NL             0             0                       < eps
+   181 t181         NL             0             0                       < eps
+   182 t182         NL             0             0                       < eps
+   183 t183         NL             0             0                       < eps
+   184 t184         NL             0             0                       < eps
+   185 t185         NL             0             0                       < eps
+   186 t186         NL             0             0                       < eps
+   187 t187         NL             0             0                          -1 
+   188 t188         NL             0             0                       < eps
+   189 t189         NL             0             0                       < eps
+   190 t190         NL             0             0                       < eps
+   191 t191         NL             0             0                       < eps
+   192 t192         NL             0             0                          -1 
+   193 t193         NL             0             0                       < eps
+   194 t194         NL             0             0                       < eps
+   195 t195         NL             0             0                          -2 
+   196 t196         NL             0             0                          -1 
+   197 t197         NL             0             0                          -1 
+   198 t198         NL             0             0                          -1 
+   199 t199         NL             0             0                          -1 
+   200 t200         NL             0             0                          -1 
+   201 t201         NL             0             0                       < eps
+   202 t202         NL             0             0                       < eps
+   203 t203         NL             0             0                       < eps
+   204 t204         NL             0             0                       < eps
+   205 t205         NL             0             0                       < eps
+   206 t206         NL             0             0                       < eps
+   207 t207         NL             0             0                       < eps
+   208 t208         NL             0             0                       < eps
+   209 t209         NL             0             0                       < eps
+   210 t210         NL             0             0                       < eps
+   211 t211         NL             0             0                       < eps
+   212 t212         NL             0             0                       < eps
+   213 t213         NL             0             0                       < eps
+   214 t214         NL             0             0                       < eps
+   215 t215         NL             0             0                       < eps
+   216 t216         NL             0             0                       < eps
+   217 t217         NL             0             0                       < eps
+   218 t218         NL             0             0                       < eps
+   219 t219         NL             0             0                          -2 
+   220 t220         NL             0             0                          -1 
+   221 t221         NL             0             0                       < eps
+   222 t222         NL             0             0                          -1 
+   223 t223         NL             0             0                          -1 
+   224 t224         NL             0             0                          -1 
+   225 t225         NL             0             0                          -1 
+   226 t226         NL             0             0                          -1 
+   227 t227         NL             0             0                          -1 
+   228 t228         NL             0             0                          -1 
+   229 t229         NL             0             0                       < eps
+   230 t230         NL             0             0                       < eps
+   231 t231         NL             0             0                       < eps
+   232 t232         NL             0             0                       < eps
+   233 t233         NL             0             0                       < eps
+   234 t234         NL             0             0                       < eps
+   235 t235         NL             0             0                       < eps
+   236 t236         NL             0             0                       < eps
+   237 t237         NL             0             0                       < eps
+   238 t238         NL             0             0                       < eps
+
+Karush-Kuhn-Tucker optimality conditions:
+
+KKT.PE: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.PB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.DE: max.abs.err = 0.00e+00 on column 0
+        max.rel.err = 0.00e+00 on column 0
+        High quality
+
+KKT.DB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+End of output

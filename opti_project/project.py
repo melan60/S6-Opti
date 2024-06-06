@@ -55,7 +55,7 @@ def lire_fichier(lien_fichier):
 :param tab_capteurs: 
 :returns: tableau de tableau de capteurs qui permet de couvrir toutes les zones
 """
-def generer_combinaison_solution(nb_zones, tab_capteurs): #initiale
+def generer_combinaison_solution(nb_zones, tab_capteurs, timer_depart, timer_limit): #initiale
     combinaisons = []
     total = 0
     for i in range(1,nb_zones+1):
@@ -63,8 +63,11 @@ def generer_combinaison_solution(nb_zones, tab_capteurs): #initiale
             # total+= is_valide(combi, nb_zones)
             if is_valide(combi, nb_zones):
                 if(is_elementaire(combi,nb_zones)):
-                # TODO : ajouter la condition is_elementaire
                     combinaisons.append(combi)
+            current_time = time.process_time()
+            if(current_time-timer_depart >= timer_limit):
+                print("dans le if de limit timer")
+                return combinaisons
     # print(total)
     return combinaisons
 
@@ -92,6 +95,9 @@ def heuristique_recursion(nb_zones, tab_capteurs, index_current_capteur, current
                         list_solutions.append(current_solution)
                         # Si liste tabou est remplie (= nombre de capteurs), on la réinitialise
                         if(len(list_tabou) == len(tab_capteurs)):
+                            print("current solution 3 if : ",current_solution[0].id)
+                            for capt in list_tabou:
+                                print("liste tabou",capt)
                             return heuristique_recursion(nb_zones, tab_capteurs, current_solution[0].id, [], list_solutions, list_tabou[:current_solution[0].id], nb_iterations)
                         return heuristique_recursion(nb_zones, tab_capteurs, capteur.id -1, current_solution[:-1], list_solutions, list_tabou, nb_iterations)
 
@@ -198,9 +204,9 @@ def format_linear_line(row):
 :param solutions_elementaires :
 :returns: le fichier .lp
 """
-def create_file_prog_linear(data_linear):
-    nom_fichier = "prog_linear.lp"
-    fichier = open(nom_fichier,"w")
+def create_file_prog_linear(data_linear,nom_fichier):
+    nom_fichier = "../results/"+nom_fichier
+    fichier = open(nom_fichier+"_prog.lp","w")
     fichier.write(data_linear)
     fichier.close()
     return nom_fichier
@@ -212,30 +218,38 @@ def create_file_prog_linear(data_linear):
 :returns: True si la solution est élémentaire, False sinon
 """
 def execute_prog_linear(nom_fichier):
-    os.system('glpsol --cpxlp '+nom_fichier+' -o solution')
+    os.system('glpsol --cpxlp '+nom_fichier+'_prog.lp -o '+nom_fichier+'_solution')
 
 #Main
-lien_fichier = '../data/fichier-exemple.txt'
-# lien_fichier = '../data/moyen_test_2.txt'
-# lien_fichier = '../data/moyen_test_3.txt'
-# lien_fichier = '../data/gros_test_1.txt'
+# # lien_fichier = '../data/fichier-exemple.txt'
+# # lien_fichier = '../data/moyen_test_2.txt'
+# # lien_fichier = '../data/moyen_test_3.txt'
+# # lien_fichier = '../data/gros_test_1.txt'
 # lien_fichier = '../data/maxi_test_1.txt'
-nb_zones, tab_capteurs = lire_fichier(lien_fichier)
-# print(nb_zones)
-# for capteur in tab_capteurs:
-#     print(capteur)
+# nb_zones, tab_capteurs = lire_fichier(lien_fichier)
+# # print(nb_zones)
+# # for capteur in tab_capteurs:",current_solution[0].id)
+#     # for capt in list_tabou:
+#     #     print("liste tabou",capt)
+# #     print(capteur)
 
+# current_time = time.process_time()
+# combinaisons = generer_combinaison_solution(nb_zones, tab_capteurs,current_time,60)
+# # for combi in combinaisons:
+# #     print("\nSolution : ")
+# #     for capteurs in combi:
+# #         print(capteurs)
 
-# combinaisons = generer_combinaison_solution(nb_zones, tab_capteurs)
-# for combi in combinaisons:
-#     print("\nSolution : ")
-#     for capteurs in combi:
-#         print(capteurs)
-
-truc = heuristique_recursion(nb_zones, tab_capteurs, 0, [], [], [], 0)
+# # truc = heuristique_recursion(nb_zones, tab_capteurs, 0, [], [], [], 0)
 
 # return_lines = create_data_prog_linear(combinaisons, tab_capteurs)
-# nom_fichier = create_file_prog_linear(return_lines)
+# # nom_fichier = create_file_prog_linear(return_lines,"fichier-exemple")
+# # nom_fichier = create_file_prog_linear(return_lines,"moyen_test_2")
+# # nom_fichier = create_file_prog_linear(return_lines,"moyen_test_3")
+# # nom_fichier = create_file_prog_linear(return_lines,"gros_test_1")
+# nom_fichier = create_file_prog_linear(return_lines,"maxi_test_1")
+
+execute_prog_linear("../results/maxi_test_1")
 # execute_prog_linear(nom_fichier)
 # print(return_lines)
 
