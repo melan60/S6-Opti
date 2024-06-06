@@ -1,0 +1,121 @@
+Problem:    
+Rows:       48
+Columns:    41
+Non-zeros:  138
+Status:     OPTIMAL
+Objective:  obj = 1159.5 (MAXimum)
+
+   No.   Row name   St   Activity     Lower bound   Upper bound    Marginal
+------ ------------ -- ------------- ------------- ------------- -------------
+     1 r.5          B             14                          81 
+     2 r.6          B             14                         175 
+     3 r.7          B             14                         129 
+     4 r.8          B             14                         108 
+     5 r.9          NU            14                          14             1 
+     6 r.10         B             49                         196 
+     7 r.11         B             35                         107 
+     8 r.12         B             35                          91 
+     9 r.13         NU            35                          35             1 
+    10 r.14         B             35                         132 
+    11 r.15         B             35                         187 
+    12 r.16         B             35                         111 
+    13 r.17         B             35                         164 
+    14 r.18         NU            35                          35             1 
+    15 r.19         B             44                         101 
+    16 r.20         NU            44                          44             1 
+    17 r.21         B             79                         187 
+    18 r.22         NU            98                          98         < eps
+    19 r.23         B            130                         193 
+    20 r.24         NU            92                          92             1 
+    21 r.25         B            109                         132 
+    22 r.26         B             17                          65 
+    23 r.27         B             17                         176 
+    24 r.28         B             17                         105 
+    25 r.29         NU            17                          17             1 
+    26 r.30         NU            19                          19             1 
+    27 r.31         NU            51                          51         < eps
+    28 r.32         B             51                          59 
+    29 r.33         B             66                         132 
+    30 r.34         NU            66                          66             1 
+    31 r.35         B            103                         132 
+    32 r.36         B             50                         196 
+    33 r.37         NU            14                          14             1 
+    34 r.38         NU            36                          36             1 
+    35 r.39         B              0                         195 
+    36 r.40         B            171                         173 
+    37 r.41         B            171                         194 
+    38 r.42         NU            19                          19             1 
+    39 r.43         NU           152                         152             1 
+    40 r.44         B             72                         113 
+    41 r.45         NU            72                          72             1 
+    42 r.46         NU           169                         169           0.5 
+    43 r.47         NU           196                         196           0.5 
+    44 r.48         NU           105                         105           0.5 
+    45 r.49         NU           153                         153           0.5 
+    46 r.50         NU           143                         143           0.5 
+    47 r.51         NU           146                         146           0.5 
+    48 r.52         NU           177                         177           0.5 
+
+   No. Column name  St   Activity     Lower bound   Upper bound    Marginal
+------ ------------ -- ------------- ------------- ------------- -------------
+     1 t1           B             14             0               
+     2 t2           B             35             0               
+     3 t3           NL             0             0                       < eps
+     4 t4           NL             0             0                       < eps
+     5 t5           NL             0             0                       < eps
+     6 t6           NL             0             0                          -1 
+     7 t7           NL             0             0                       < eps
+     8 t8           NL             0             0                          -1 
+     9 t9           B             35             0               
+    10 t10          B              6             0               
+    11 t11          B             38             0               
+    12 t12          B             92             0               
+    13 t13          B             17             0               
+    14 t14          NL             0             0                          -1 
+    15 t15          NL             0             0                          -1 
+    16 t16          NL             0             0                          -1 
+    17 t17          NL             0             0                          -2 
+    18 t18          NL             0             0                          -1 
+    19 t19          B             19             0               
+    20 t20          B             32             0               
+    21 t21          B             34             0               
+    22 t22          NL             0             0                       < eps
+    23 t23          B             14             0               
+    24 t24          B             36             0               
+    25 t25          NL             0             0                          -1 
+    26 t26          B             19             0               
+    27 t27          B            152             0               
+    28 t28          NL             0             0                          -1 
+    29 t29          NL             0             0                       < eps
+    30 t30          B             72             0               
+    31 t31          NL             0             0                        -0.5 
+    32 t32          B            169             0               
+    33 t33          B             27             0               
+    34 t34          B             78             0               
+    35 t35          NL             0             0                       < eps
+    36 t36          NL             0             0                       < eps
+    37 t37          NL             0             0                       < eps
+    38 t38          B             75             0               
+    39 t39          B           18.5             0               
+    40 t40          B           49.5             0               
+    41 t41          B          127.5             0               
+
+Karush-Kuhn-Tucker optimality conditions:
+
+KKT.PE: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.PB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.DE: max.abs.err = 0.00e+00 on column 0
+        max.rel.err = 0.00e+00 on column 0
+        High quality
+
+KKT.DB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+End of output
