@@ -1,19 +1,14 @@
-# construire des solutions valide
-# est ce que la solution est élementaire?
-# écrire résultat dans un fichier
-
-# résultat = au temps d'allumage total du réseau ? ou au tps d'allumage de chaque capteur
-
-# calculer le temps d'execution
-# fonction "glpk" qui callcul le résultat du programme linéaire
-
-#méthode qui enlève les doublons de solution élémentaire (pas obliG je ccrois) 
-
 import itertools
 import time
 import numpy as np
 import os
 
+
+"""Classe Capteur
+:param id : identifiant du capteur
+:param duree_vie : durée de vie du capteur
+:param zones : zones couvertes par le capteur
+"""
 class Capteur:
     def __init__(self, id, duree_vie, zones):
         self.id = id
@@ -22,8 +17,8 @@ class Capteur:
 
     def __str__(self):
         return "Capteur " + str(self.id) + " : duree_vie = " + str(self.duree_vie) + ", zones = " + str(self.zones)
-
-
+    
+    
 
 """Génère une/l'ensemble combinaison de capteur qui couvre toute la zone
 :param nb_zones: 
@@ -54,8 +49,16 @@ def generer_combinaison_solution(nb_zones, tab_capteurs, timer_depart, timer_lim
 # - prendre un ensemble de solution qui regroupe le plus de capteurs et après 
     # limiter cet ensemble grâce à une méthode est élémentaire dans lquelle on enlève un capteur, puis un autre si tjs possible ...
 
+# def heuristique_recursion(nb_zones, tab_capteurs, index_current_capteur, current_solution, list_solutions, list_tabou, timer_depart, time_limit):
 def heuristique_recursion(nb_zones, tab_capteurs, index_current_capteur, current_solution, list_solutions, list_tabou, nb_iterations):
     nb_iterations+=1
+    if(nb_iterations >= 200):
+        print("fin nb_iterations")
+        return list_solutions
+    # current_time = time.process_time()
+    # if current_time-timer_depart >= time_limit:
+    #     print("dans le if de limit timer")
+    #     return list_solutions
     for i in range(index_current_capteur, len(tab_capteurs)): #obtenir une solution
         capteur = tab_capteurs[i]
         # print("for :", capteur)
@@ -76,20 +79,16 @@ def heuristique_recursion(nb_zones, tab_capteurs, index_current_capteur, current
                         # Si liste tabou est remplie (= nombre de capteurs), on la réinitialise
                         if(len(list_tabou) == len(tab_capteurs)):
                             # print("last if : " , current_solution[0].id, list_tabou[:current_solution[0].id])
+                            # return heuristique_recursion(nb_zones, tab_capteurs, current_solution[0].id, [], list_solutions, list_tabou[:current_solution[0].id], timer_depart, time_limit)
                             return heuristique_recursion(nb_zones, tab_capteurs, current_solution[0].id, [], list_solutions, list_tabou[:current_solution[0].id], nb_iterations)
                         # print("last else : " , capteur.id -1, list_tabou, current_solution[:-1])
+                        # return heuristique_recursion(nb_zones, tab_capteurs, capteur.id -1, current_solution[:-1], list_solutions, list_tabou, timer_depart, time_limit)
                         return heuristique_recursion(nb_zones, tab_capteurs, capteur.id -1, current_solution[:-1], list_solutions, list_tabou, nb_iterations)
 
     #condition d'arrêt
-    # if(current_solution == []):
-    #     return list_solutions
     if(index_current_capteur == len(tab_capteurs)-1):
         return list_solutions
-    
-    #condition d'arrêt
-    # if(nb_iterations == len(tab_capteurs)):
-    #     return list_solutions
-    
+    # return heuristique_recursion(nb_zones, tab_capteurs, current_solution[0].id, [], list_solutions, list_tabou[:current_solution[0].id], timer_depart, time_limit)
     return heuristique_recursion(nb_zones, tab_capteurs, current_solution[0].id, [], list_solutions, list_tabou[:current_solution[0].id], nb_iterations)
 
 #=======================================================================================================
@@ -194,8 +193,9 @@ def create_data_prog_linear(solutions_elementaires,tab_capteurs):
             system_lineaire[capteur.id-1][i] = 1
     data_linear += first_line[:-1] + "\n\nSubject To\n\n"
     for i in range(len(tab_capteurs)):
-        line = format_linear_line(system_lineaire[i])
-        data_linear += line + " <= " + tab_capteurs[i].duree_vie +"\n"
+        if system_lineaire[i].sum() != 0:
+            line = format_linear_line(system_lineaire[i])
+            data_linear += line + " <= " + tab_capteurs[i].duree_vie +"\n"
     return data_linear+"\nEND"
 
 
