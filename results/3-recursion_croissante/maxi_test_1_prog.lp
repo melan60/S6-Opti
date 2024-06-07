@@ -1,6 +1,0 @@
-Maximize
-
-Subject To
-
-
-END
