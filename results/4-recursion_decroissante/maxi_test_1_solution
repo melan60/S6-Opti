@@ -1,0 +1,431 @@
+Problem:    
+Rows:       200
+Columns:    199
+Non-zeros:  398
+Status:     OPTIMAL
+Objective:  obj = 82 (MAXimum)
+
+   No.   Row name   St   Activity     Lower bound   Upper bound    Marginal
+------ ------------ -- ------------- ------------- ------------- -------------
+     1 r.5          NU            82                          82             1 
+     2 r.6          B             82                         194 
+     3 r.7          B              0                         127 
+     4 r.8          B              0                         103 
+     5 r.9          B              0                         176 
+     6 r.10         B              0                          94 
+     7 r.11         B              0                         147 
+     8 r.12         B              0                         175 
+     9 r.13         B              0                         101 
+    10 r.14         B              0                         151 
+    11 r.15         B              0                          80 
+    12 r.16         B              0                         199 
+    13 r.17         B              0                          23 
+    14 r.18         B              0                          36 
+    15 r.19         B              0                         193 
+    16 r.20         B              0                          14 
+    17 r.21         B              0                          19 
+    18 r.22         B              0                         121 
+    19 r.23         B              0                         187 
+    20 r.24         B              0                         141 
+    21 r.25         B              0                          56 
+    22 r.26         B              0                          67 
+    23 r.27         B              0                         126 
+    24 r.28         B              0                         128 
+    25 r.29         B              0                          95 
+    26 r.30         B              0                          95 
+    27 r.31         B              0                          42 
+    28 r.32         B              0                          96 
+    29 r.33         B              0                          16 
+    30 r.34         B              0                         133 
+    31 r.35         B              0                         129 
+    32 r.36         B              0                          65 
+    33 r.37         B              0                         179 
+    34 r.38         B              0                         142 
+    35 r.39         B              0                          49 
+    36 r.40         B              0                         188 
+    37 r.41         B              0                          47 
+    38 r.42         B              0                         184 
+    39 r.43         B              0                          90 
+    40 r.44         B              0                          75 
+    41 r.45         B              0                         150 
+    42 r.46         B              0                         151 
+    43 r.47         B              0                         177 
+    44 r.48         B              0                          54 
+    45 r.49         B              0                          98 
+    46 r.50         B              0                          36 
+    47 r.51         B              0                         196 
+    48 r.52         B              0                         192 
+    49 r.53         B              0                         129 
+    50 r.54         B              0                          22 
+    51 r.55         B              0                         161 
+    52 r.56         B              0                          17 
+    53 r.57         B              0                         158 
+    54 r.58         B              0                         185 
+    55 r.59         B              0                          42 
+    56 r.60         B              0                         190 
+    57 r.61         B              0                         101 
+    58 r.62         B              0                          99 
+    59 r.63         B              0                         170 
+    60 r.64         B              0                         174 
+    61 r.65         B              0                          39 
+    62 r.66         B              0                          38 
+    63 r.67         B              0                          38 
+    64 r.68         B              0                         101 
+    65 r.69         B              0                          95 
+    66 r.70         B              0                         116 
+    67 r.71         B              0                         144 
+    68 r.72         B              0                         196 
+    69 r.73         B              0                          79 
+    70 r.74         B              0                          38 
+    71 r.75         B              0                          88 
+    72 r.76         B              0                         186 
+    73 r.77         B              0                         145 
+    74 r.78         B              0                          69 
+    75 r.79         B              0                         144 
+    76 r.80         B              0                         136 
+    77 r.81         B              0                          69 
+    78 r.82         B              0                         176 
+    79 r.83         B              0                         153 
+    80 r.84         B              0                         178 
+    81 r.85         B              0                          95 
+    82 r.86         B              0                         193 
+    83 r.87         B              0                         118 
+    84 r.88         B              0                          73 
+    85 r.89         B              0                         139 
+    86 r.90         B              0                          66 
+    87 r.91         B              0                          46 
+    88 r.92         B              0                          75 
+    89 r.93         B              0                         111 
+    90 r.94         B              0                          53 
+    91 r.95         B              0                         175 
+    92 r.96         B              0                          60 
+    93 r.97         B              0                         123 
+    94 r.98         B              0                         163 
+    95 r.99         B              0                          63 
+    96 r.100        B              0                          23 
+    97 r.101        B              0                         171 
+    98 r.102        B              0                          49 
+    99 r.103        B              0                         146 
+   100 r.104        B              0                         101 
+   101 r.105        B              0                         171 
+   102 r.106        B              0                         103 
+   103 r.107        B              0                         113 
+   104 r.108        B              0                          40 
+   105 r.109        B              0                           6 
+   106 r.110        B              0                         147 
+   107 r.111        B              0                         150 
+   108 r.112        B              0                           2 
+   109 r.113        B              0                          15 
+   110 r.114        B              0                          73 
+   111 r.115        B              0                          77 
+   112 r.116        B              0                          95 
+   113 r.117        B              0                          47 
+   114 r.118        B              0                         171 
+   115 r.119        B              0                          80 
+   116 r.120        B              0                          37 
+   117 r.121        B              0                          98 
+   118 r.122        B              0                         166 
+   119 r.123        B              0                          26 
+   120 r.124        B              0                         192 
+   121 r.125        B              0                          26 
+   122 r.126        B              0                          96 
+   123 r.127        B              0                          92 
+   124 r.128        B              0                          19 
+   125 r.129        B              0                         139 
+   126 r.130        B              0                          93 
+   127 r.131        B              0                          76 
+   128 r.132        B              0                          16 
+   129 r.133        B              0                         171 
+   130 r.134        B              0                         185 
+   131 r.135        B              0                         149 
+   132 r.136        B              0                         158 
+   133 r.137        B              0                          84 
+   134 r.138        B              0                          87 
+   135 r.139        B              0                         164 
+   136 r.140        B              0                          15 
+   137 r.141        B              0                          74 
+   138 r.142        B              0                          27 
+   139 r.143        B              0                         162 
+   140 r.144        B              0                         120 
+   141 r.145        B              0                         123 
+   142 r.146        B              0                          87 
+   143 r.147        B              0                          17 
+   144 r.148        B              0                         160 
+   145 r.149        B              0                          40 
+   146 r.150        B              0                         124 
+   147 r.151        B              0                         157 
+   148 r.152        B              0                         133 
+   149 r.153        B              0                         157 
+   150 r.154        B              0                         123 
+   151 r.155        B              0                          45 
+   152 r.156        B              0                         111 
+   153 r.157        B              0                         133 
+   154 r.158        B              0                          32 
+   155 r.159        B              0                         169 
+   156 r.160        B              0                         105 
+   157 r.161        B              0                          56 
+   158 r.162        B              0                          23 
+   159 r.163        B              0                         122 
+   160 r.164        B              0                         127 
+   161 r.165        B              0                          27 
+   162 r.166        B              0                         130 
+   163 r.167        B              0                          55 
+   164 r.168        B              0                         129 
+   165 r.169        B              0                          81 
+   166 r.170        B              0                          43 
+   167 r.171        B              0                         127 
+   168 r.172        B              0                          54 
+   169 r.173        B              0                         186 
+   170 r.174        B              0                          78 
+   171 r.175        B              0                          50 
+   172 r.176        B              0                           6 
+   173 r.177        B              0                         125 
+   174 r.178        B              0                          83 
+   175 r.179        B              0                          37 
+   176 r.180        B              0                          47 
+   177 r.181        B              0                          95 
+   178 r.182        B              0                         104 
+   179 r.183        B              0                         149 
+   180 r.184        B              0                          65 
+   181 r.185        B              0                         112 
+   182 r.186        B              0                         120 
+   183 r.187        B              0                         176 
+   184 r.188        B              0                         147 
+   185 r.189        B              0                          61 
+   186 r.190        B              0                         130 
+   187 r.191        B              0                         150 
+   188 r.192        B              0                         147 
+   189 r.193        B              0                         182 
+   190 r.194        B              0                         136 
+   191 r.195        B              0                         193 
+   192 r.196        B              0                         145 
+   193 r.197        B              0                         125 
+   194 r.198        B              0                         180 
+   195 r.199        B              0                         113 
+   196 r.200        B              0                          51 
+   197 r.201        B              0                          83 
+   198 r.202        B              0                          20 
+   199 r.203        B              0                          34 
+   200 r.204        B              0                         132 
+
+   No. Column name  St   Activity     Lower bound   Upper bound    Marginal
+------ ------------ -- ------------- ------------- ------------- -------------
+     1 t1           B             82             0               
+     2 t2           NL             0             0                       < eps
+     3 t3           NL             0             0                       < eps
+     4 t4           NL             0             0                       < eps
+     5 t5           NL             0             0                       < eps
+     6 t6           NL             0             0                       < eps
+     7 t7           NL             0             0                       < eps
+     8 t8           NL             0             0                       < eps
+     9 t9           NL             0             0                       < eps
+    10 t10          NL             0             0                       < eps
+    11 t11          NL             0             0                       < eps
+    12 t12          NL             0             0                       < eps
+    13 t13          NL             0             0                       < eps
+    14 t14          NL             0             0                       < eps
+    15 t15          NL             0             0                       < eps
+    16 t16          NL             0             0                       < eps
+    17 t17          NL             0             0                       < eps
+    18 t18          NL             0             0                       < eps
+    19 t19          NL             0             0                       < eps
+    20 t20          NL             0             0                       < eps
+    21 t21          NL             0             0                       < eps
+    22 t22          NL             0             0                       < eps
+    23 t23          NL             0             0                       < eps
+    24 t24          NL             0             0                       < eps
+    25 t25          NL             0             0                       < eps
+    26 t26          NL             0             0                       < eps
+    27 t27          NL             0             0                       < eps
+    28 t28          NL             0             0                       < eps
+    29 t29          NL             0             0                       < eps
+    30 t30          NL             0             0                       < eps
+    31 t31          NL             0             0                       < eps
+    32 t32          NL             0             0                       < eps
+    33 t33          NL             0             0                       < eps
+    34 t34          NL             0             0                       < eps
+    35 t35          NL             0             0                       < eps
+    36 t36          NL             0             0                       < eps
+    37 t37          NL             0             0                       < eps
+    38 t38          NL             0             0                       < eps
+    39 t39          NL             0             0                       < eps
+    40 t40          NL             0             0                       < eps
+    41 t41          NL             0             0                       < eps
+    42 t42          NL             0             0                       < eps
+    43 t43          NL             0             0                       < eps
+    44 t44          NL             0             0                       < eps
+    45 t45          NL             0             0                       < eps
+    46 t46          NL             0             0                       < eps
+    47 t47          NL             0             0                       < eps
+    48 t48          NL             0             0                       < eps
+    49 t49          NL             0             0                       < eps
+    50 t50          NL             0             0                       < eps
+    51 t51          NL             0             0                       < eps
+    52 t52          NL             0             0                       < eps
+    53 t53          NL             0             0                       < eps
+    54 t54          NL             0             0                       < eps
+    55 t55          NL             0             0                       < eps
+    56 t56          NL             0             0                       < eps
+    57 t57          NL             0             0                       < eps
+    58 t58          NL             0             0                       < eps
+    59 t59          NL             0             0                       < eps
+    60 t60          NL             0             0                       < eps
+    61 t61          NL             0             0                       < eps
+    62 t62          NL             0             0                       < eps
+    63 t63          NL             0             0                       < eps
+    64 t64          NL             0             0                       < eps
+    65 t65          NL             0             0                       < eps
+    66 t66          NL             0             0                       < eps
+    67 t67          NL             0             0                       < eps
+    68 t68          NL             0             0                       < eps
+    69 t69          NL             0             0                       < eps
+    70 t70          NL             0             0                       < eps
+    71 t71          NL             0             0                       < eps
+    72 t72          NL             0             0                       < eps
+    73 t73          NL             0             0                       < eps
+    74 t74          NL             0             0                       < eps
+    75 t75          NL             0             0                       < eps
+    76 t76          NL             0             0                       < eps
+    77 t77          NL             0             0                       < eps
+    78 t78          NL             0             0                       < eps
+    79 t79          NL             0             0                       < eps
+    80 t80          NL             0             0                       < eps
+    81 t81          NL             0             0                       < eps
+    82 t82          NL             0             0                       < eps
+    83 t83          NL             0             0                       < eps
+    84 t84          NL             0             0                       < eps
+    85 t85          NL             0             0                       < eps
+    86 t86          NL             0             0                       < eps
+    87 t87          NL             0             0                       < eps
+    88 t88          NL             0             0                       < eps
+    89 t89          NL             0             0                       < eps
+    90 t90          NL             0             0                       < eps
+    91 t91          NL             0             0                       < eps
+    92 t92          NL             0             0                       < eps
+    93 t93          NL             0             0                       < eps
+    94 t94          NL             0             0                       < eps
+    95 t95          NL             0             0                       < eps
+    96 t96          NL             0             0                       < eps
+    97 t97          NL             0             0                       < eps
+    98 t98          NL             0             0                       < eps
+    99 t99          NL             0             0                       < eps
+   100 t100         NL             0             0                       < eps
+   101 t101         NL             0             0                       < eps
+   102 t102         NL             0             0                       < eps
+   103 t103         NL             0             0                       < eps
+   104 t104         NL             0             0                       < eps
+   105 t105         NL             0             0                       < eps
+   106 t106         NL             0             0                       < eps
+   107 t107         NL             0             0                       < eps
+   108 t108         NL             0             0                       < eps
+   109 t109         NL             0             0                       < eps
+   110 t110         NL             0             0                       < eps
+   111 t111         NL             0             0                       < eps
+   112 t112         NL             0             0                       < eps
+   113 t113         NL             0             0                       < eps
+   114 t114         NL             0             0                       < eps
+   115 t115         NL             0             0                       < eps
+   116 t116         NL             0             0                       < eps
+   117 t117         NL             0             0                       < eps
+   118 t118         NL             0             0                       < eps
+   119 t119         NL             0             0                       < eps
+   120 t120         NL             0             0                       < eps
+   121 t121         NL             0             0                       < eps
+   122 t122         NL             0             0                       < eps
+   123 t123         NL             0             0                       < eps
+   124 t124         NL             0             0                       < eps
+   125 t125         NL             0             0                       < eps
+   126 t126         NL             0             0                       < eps
+   127 t127         NL             0             0                       < eps
+   128 t128         NL             0             0                       < eps
+   129 t129         NL             0             0                       < eps
+   130 t130         NL             0             0                       < eps
+   131 t131         NL             0             0                       < eps
+   132 t132         NL             0             0                       < eps
+   133 t133         NL             0             0                       < eps
+   134 t134         NL             0             0                       < eps
+   135 t135         NL             0             0                       < eps
+   136 t136         NL             0             0                       < eps
+   137 t137         NL             0             0                       < eps
+   138 t138         NL             0             0                       < eps
+   139 t139         NL             0             0                       < eps
+   140 t140         NL             0             0                       < eps
+   141 t141         NL             0             0                       < eps
+   142 t142         NL             0             0                       < eps
+   143 t143         NL             0             0                       < eps
+   144 t144         NL             0             0                       < eps
+   145 t145         NL             0             0                       < eps
+   146 t146         NL             0             0                       < eps
+   147 t147         NL             0             0                       < eps
+   148 t148         NL             0             0                       < eps
+   149 t149         NL             0             0                       < eps
+   150 t150         NL             0             0                       < eps
+   151 t151         NL             0             0                       < eps
+   152 t152         NL             0             0                       < eps
+   153 t153         NL             0             0                       < eps
+   154 t154         NL             0             0                       < eps
+   155 t155         NL             0             0                       < eps
+   156 t156         NL             0             0                       < eps
+   157 t157         NL             0             0                       < eps
+   158 t158         NL             0             0                       < eps
+   159 t159         NL             0             0                       < eps
+   160 t160         NL             0             0                       < eps
+   161 t161         NL             0             0                       < eps
+   162 t162         NL             0             0                       < eps
+   163 t163         NL             0             0                       < eps
+   164 t164         NL             0             0                       < eps
+   165 t165         NL             0             0                       < eps
+   166 t166         NL             0             0                       < eps
+   167 t167         NL             0             0                       < eps
+   168 t168         NL             0             0                       < eps
+   169 t169         NL             0             0                       < eps
+   170 t170         NL             0             0                       < eps
+   171 t171         NL             0             0                       < eps
+   172 t172         NL             0             0                       < eps
+   173 t173         NL             0             0                       < eps
+   174 t174         NL             0             0                       < eps
+   175 t175         NL             0             0                       < eps
+   176 t176         NL             0             0                       < eps
+   177 t177         NL             0             0                       < eps
+   178 t178         NL             0             0                       < eps
+   179 t179         NL             0             0                       < eps
+   180 t180         NL             0             0                       < eps
+   181 t181         NL             0             0                       < eps
+   182 t182         NL             0             0                       < eps
+   183 t183         NL             0             0                       < eps
+   184 t184         NL             0             0                       < eps
+   185 t185         NL             0             0                       < eps
+   186 t186         NL             0             0                       < eps
+   187 t187         NL             0             0                       < eps
+   188 t188         NL             0             0                       < eps
+   189 t189         NL             0             0                       < eps
+   190 t190         NL             0             0                       < eps
+   191 t191         NL             0             0                       < eps
+   192 t192         NL             0             0                       < eps
+   193 t193         NL             0             0                       < eps
+   194 t194         NL             0             0                       < eps
+   195 t195         NL             0             0                       < eps
+   196 t196         NL             0             0                       < eps
+   197 t197         NL             0             0                       < eps
+   198 t198         NL             0             0                       < eps
+   199 t199         NL             0             0                       < eps
+
+Karush-Kuhn-Tucker optimality conditions:
+
+KKT.PE: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.PB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.DE: max.abs.err = 0.00e+00 on column 0
+        max.rel.err = 0.00e+00 on column 0
+        High quality
+
+KKT.DB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+End of output
